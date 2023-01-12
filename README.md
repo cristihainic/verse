@@ -4,5 +4,5 @@ The binary file in the [release assets](https://github.com/cristihainic/verse/re
 
 On Linux, you can save the binary file under `/bin/` and then call `verse` anywhere in the terminal, or, one step further, add `verse` to your `.bashrc` / `.zshrc` / etc files - this will feed a new random Bible verse each time you open a terminal tab.
 
-Thanks to [DailyVerses.net](https://dailyverses.net/) for being such a scrapable site and providing the text used by this program!
+Thanks to [DailyVerses.net](https://dailyverses.net/) for being such a scrapable site and providing the data used by this program!
 
