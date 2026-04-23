@@ -1,6 +1,8 @@
-Bible verses straight to your terminal — instantly.
+Bible verses straight to your terminal.
 
-A verse appears each time you open a new terminal, and `verse` on the command line prints one on demand. Verses are served from a small local cache that refills itself in the background, so display is effectively instant.
+A verse appears each time you open a new terminal, and `verse` on the command line prints one on demand. 
+
+Verses are served from a small local cache that refills itself in the background, so display is effectively instant.
 
 ## Install
 
@@ -12,7 +14,7 @@ curl -fsSL https://raw.githubusercontent.com/cristihainic/verse/master/verse.py 
 
 The installer:
 
-- Installs the Python dependencies (`beautifulsoup4`, `requests`) to your user site
+- Installs the Python dependencies (`beautifulsoup4`, `requests`) on your machine
 - Copies `verse` to `~/.local/bin/verse`
 - Appends a line to your shell rc (`~/.zshrc`, `~/.bashrc`, or `~/.bash_profile`) so a verse prints on every new terminal
 - Primes the verse cache in the background
