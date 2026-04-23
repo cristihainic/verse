@@ -1,8 +1,48 @@
-Bible verses straight to your terminal!
+Bible verses straight to your terminal.
 
-The binary file in the [release assets](https://github.com/cristihainic/verse/releases) is bundled for Linux only! If you're using MacOS / Windows, you'll have to bundle it yourself with something like [pyinstaller](https://pyinstaller.org/en/stable/), or just use the Python script as-is.
+A verse appears each time you open a new terminal, and `verse` on the command line prints one on demand. 
 
-On Linux, you can save the binary file under `/bin/` and then call `verse` anywhere in the terminal, or, one step further, add `verse` to your `.bashrc` / `.zshrc` / etc files - this will feed a new random Bible verse each time you open a terminal tab.
+Verses are served from a small local cache that refills itself in the background, so display is effectively instant.
+
+## Install
+
+Requires Python 3.8+ and `pip`. One line:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/cristihainic/verse/master/verse.py | python3 - --install
+```
+
+The installer:
+
+- Installs the Python dependencies (`beautifulsoup4`, `requests`) on your machine
+- Copies `verse` to `~/.local/bin/verse`
+- Appends a line to your shell rc (`~/.zshrc`, `~/.bashrc`, or `~/.bash_profile`) so a verse prints on every new terminal
+- Primes the verse cache in the background
+
+Open a new terminal to see your first verse. Type `verse` any time to print another.
+
+If `~/.local/bin` isn't on your `$PATH`, the installer will tell you the one line to add.
+
+## How it works
+
+On every invocation, `verse` pops a pre-fetched verse from `~/.cache/verse/pool.json` and prints it with no network call. It then forks a detached background process to top the pool back up to 30 verses. Normal terminal usage keeps the cache perpetually full.
+
+If the pool is ever empty (first run, or prolonged offline use), `verse` falls back to a live fetch.
+
+## Uninstall
+
+One line:
+
+```sh
+verse --uninstall
+```
+
+This removes the `verse` binary, the cache at `~/.cache/verse`, and the startup line from your shell rc. The `beautifulsoup4` and `requests` packages are left in place — remove them with `pip uninstall beautifulsoup4 requests` if you want them gone too.
+
+## Platforms
+
+Works on Linux and macOS. Not supported on Windows.
+
+## Credits
 
 Thanks to [DailyVerses.net](https://dailyverses.net/) for being such a scrapable site and providing the data used by this program!
-
